@@ -17,17 +17,17 @@ api.use(jwt({
   secret: config.get('auth').jwt_key,
   algorithms: ['HS256']
 })
-// .unless({
-//   path: [
-//     '/recipes/',
-//     '/recipes/popular',
-//     '/recipes/freshNew',
-//     '/recipes/breakfast',
-//     '/recipes/brunch',
-//     '/recipes/lunch',
-//     '/recipes/dinner'
-//   ]
-// })
+  // .unless({
+  //   path: [
+  //     '/recipes/',
+  //     '/recipes/popular',
+  //     '/recipes/freshNew',
+  //     '/recipes/breakfast',
+  //     '/recipes/brunch',
+  //     '/recipes/lunch',
+  //     '/recipes/dinner'
+  //   ]
+  // })
 );
 
 api.use((err, req, res, next) => {

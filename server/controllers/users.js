@@ -70,12 +70,14 @@ module.exports = {
           expiresIn: '180m'
         });
 
-      res.send({
+      res.send({    // added cookie and "token" ".cookie("token", token)"
         error: false,
         message: 'JWT successfully generated',
         token: token,
         user
-        //id: payload._id
+        // user: {
+        //   id: payload._id
+        // }
       });
     } catch (error) {
       res.status(500).send({
@@ -122,20 +124,29 @@ module.exports = {
 
   updateUser: async (req, res) => {
     try {
-      const { userId } = req.params;
+      //const token = req.headers['x-access-token'] //! add after
+      const { userId } = req.params;//
+      //const decoded = jwt.verify(token, config.get('auth').jwt_key); //! add after
+      //const userId = decoded._id; //! add after
+      //const user = await User.findById(userId); //! added after
 
       if (!mongoose.Types.ObjectId.isValid(userId)) {
-        return res.status(404).send(`No user with id: ${userId}`);
+        return res.status(404).send({
+          error: true,
+          message: `No user with id: ${userId}`
+        });
       };
 
-      req.body.password = bcrypt.hashSync(req.body.password);
-      req.body.repeatPassword = bcrypt.hashSync(req.body.repeatPassword);
       const body = req.body;
-      const updatedUser = await User.findByIdAndUpdate(userId, body, { new: true });
-
+      // req.body.password = bcrypt.hashSync(req.body.password);
+      // req.body.repeatPassword = bcrypt.hashSync(req.body.repeatPassword);
+      const updatedUser = await User.findByIdAndUpdate(
+        userId, body, { new: true } // added body: user
+      );
       res.status(200).send({
         error: false,
         message: `User ${userId} is updated!`,
+        //token: token, //! add after
         updatedUser
       });
     } catch (error) {

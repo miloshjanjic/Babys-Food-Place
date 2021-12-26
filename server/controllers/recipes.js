@@ -5,6 +5,7 @@ const path = require('path');
 
 module.exports = {
   getRecipes: async (req, res) => {
+    //const token = req.headers['x-access-token'] //! add after
     try {
       const recipes = await Recipe.find();
       res.status(200).send({
@@ -89,6 +90,7 @@ module.exports = {
 
   likeRecipe: async (req, res) => {
     try {
+      //const token = req.headers['x-access-token'] //! add after
       const { id } = req.params;
       const recipe = await Recipe.findById(id);
       const likedRecipe = await Recipe.findByIdAndUpdate(
@@ -109,6 +111,7 @@ module.exports = {
 
   deleteRecipe: async (req, res) => {
     try {
+      //const token = req.headers['x-access-token'] //! add after
       const { id } = req.params;
       const deletedRecipe = await Recipe.findByIdAndDelete(id);
       res.status(200).send({
@@ -126,6 +129,7 @@ module.exports = {
 
   breakfast: async (req, res) => {
     try {
+      //const token = req.headers['x-access-token'] //! add after
       const breakfast = await Recipe.find({ category: 'breakfast' }).exec();
       res.status(200).send({
         error: false,
@@ -190,6 +194,7 @@ module.exports = {
 
   freshNew: async (req, res) => {
     try {
+      //const token = req.headers['x-access-token'] //! add after
       const freshNew = await (await Recipe.find().sort({ createdAt: -1 })).slice(0, 3);
       res.status(200).send({
         error: false,
@@ -206,6 +211,7 @@ module.exports = {
 
   mostPopular: async (req, res) => {
     try {
+      //const token = req.headers['x-access-token'] //! add after
       const mostPopular = await (await Recipe.find().sort({ likeCount: -1 })).slice(0, 6);
       res.status(200).send({
         error: false,

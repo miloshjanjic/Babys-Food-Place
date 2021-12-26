@@ -2,6 +2,8 @@ const fs = require('fs');
 
 let configData = null;
 let configFile = `${__dirname}/../config.json`;
+// let configFile = `${__dirname}/../.env.json`;
+
 
 const get = (section) => {  
     if(configData === null) { 

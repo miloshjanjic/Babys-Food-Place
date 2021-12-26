@@ -25,11 +25,20 @@ app.use('/users', proxy(
   }
 ));
 
+// app.use(function (req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requested-With, Content-Type, Accept"
+//   );
+//   next();
+// });
+
 const PORT = process.env.PORT || config.get('ports').proxy;
 
 app.listen(PORT, error => {
   if (error) {
     return console.log(`Could not start proxy: ${error} `)
   }
-  console.log(`Proxy service successfully started at: ${PORT}`);
+  console.log('Proxy service successfully started at:', PORT);
 });

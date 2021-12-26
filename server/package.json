@@ -5,18 +5,24 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "proxy": "node services/proxy/index.js"
+    "recipes": "nodemon services/recipes/index.js",
+    "users": "nodemon services/users/index.js",
+    "proxy": "nodemon services/proxy/index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
     "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-fileupload": "^1.2.1",
     "express-http-proxy": "^1.6.2",
     "express-jwt": "^6.1.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.13.7"
+    "mongoose": "^5.13.7",
+    "nodemon": "^2.0.15",
+    "universal-cookie": "^4.0.4"
   }
 }

@@ -1,13 +1,13 @@
 {
   "database": {
-      "host": "cluster0.yt8f9.mongodb.net",
-      "port": 27017,
-      "username": "dev",
-      "password": "bazapass2021",
-      "dbname": "project"
+      "host": "....",
+      "port": ....,
+      "username": "....",
+      "password": "....",
+      "dbname": "....."
   },
   "auth": {
-      "jwt_key": "final"
+      "jwt_key": "....."
   },
   "ports": {
       "proxy": 4000,
